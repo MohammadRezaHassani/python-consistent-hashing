@@ -1,0 +1,6 @@
+python-memcached==1.62
+ketama==0.1.1
+pytest==8.3.4
+redis==4.6.0
+
+
