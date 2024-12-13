@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  memcache1:
+    image: memcached
+    container_name: memcache1
+
+  memcache2:
+    image: memcached
+    container_name: memcache2
+
+  memcache3:
+    image: memcached
+    container_name: memcache3
+
+  memcache4:
+    image: memcached
+    container_name: memcache4
+
+  memcache5:
+    image: memcached
+    container_name: memcache5
+
+  memcache6:
+      image: memcached
+      container_name: memcache6
+
+  memcache7:
+      image: memcached
+      container_name: memcache7
+
+  memcache8:
+      image: memcached
+      container_name: memcache8
+
+  redis:
+    image: redis:latest
+    container_name: redis
+
+  app:
+    build: .
+    container_name: python-app
+    depends_on:
+      - memcache1
+      - memcache2
+      - memcache3
+      - memcache4
+      - memcache5
+      - memcache6
+      - memcache7
+      - memcache8
+      - redis
+    environment:
+     MEMCACHE_SERVERS: "memcache1:11211,memcache2:11211,memcache3:11211,memcache4:11211,memcache5:11211,memcache6:11211,memcache7:11211"
+     REDIS_HOST: redis
+     REDIS_PORT: 6379
+
+    volumes:
+      - ".:/app"
+    stdin_open: true
+    tty: true
+
+
+
+
+
+
+
+
